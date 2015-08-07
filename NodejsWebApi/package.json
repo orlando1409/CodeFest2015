@@ -1,0 +1,14 @@
+{
+  "name": "NodejsWebApi",
+  "version": "0.0.0",
+  "description": "NodejsWebApi",
+  "main": "server.js",
+  "author": {
+    "name": "ocastillo",
+    "email": "orlando1409@gmail.com"
+  },
+  "dependencies": {
+    "recordrtc-nodejs": "^1.0.0",
+    "underscore": "^1.8.3"
+  }
+}

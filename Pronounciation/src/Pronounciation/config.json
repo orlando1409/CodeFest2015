@@ -1,0 +1,11 @@
+{
+  "AppSettings": {
+    "SiteTitle": "Pronounciation",
+    "ApiUrl":  "http://localhost:1337/api"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-Pronounciation-628def4b-dd9a-41f7-8f32-111b9a69b336;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}

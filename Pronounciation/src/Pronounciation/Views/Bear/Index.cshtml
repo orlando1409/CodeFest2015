@@ -1,0 +1,22 @@
+﻿@using Microsoft.Framework.Configuration
+@inject IConfiguration config
+<div id="divBears" class="divBears" data-api-url="@config.Get("AppSettings:ApiUrl")">
+    <ul>
+
+    </ul>
+</div>
+<form id="formBear">
+    <h3>Create a new Bear</h3>
+    <p>
+        <label for="Id">Contact Id:</label>
+        <input type="text" name="id" id="txtId" class="textBox" readonly />
+    </p>
+    <p>
+        <label for="Name">Name:</label>
+        <input type="text" name="name" id="txtName" class="textBox" />
+    </p>
+</form>
+<input type="button" id="btnSave" value="Save"  class="button" />
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.serialize-object.js"></script>
+<script src="~/js/Bears/bears.js"></script>
