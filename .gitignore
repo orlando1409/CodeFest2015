@@ -245,3 +245,5 @@ FakesAssemblies/
 _Pvt_Extensions
 /*.data
 /*.exe
+/NodejsWebApi/*.dat
+/NodejsWebApi/*.dat
