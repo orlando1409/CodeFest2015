@@ -1,0 +1,20 @@
+﻿@using Microsoft.Framework.Configuration
+@inject IConfiguration config
+<div id="divTrouble" class="divTrouble" data-api-url="@config.Get("AppSettings:ApiUrl")">
+    <ul></ul>
+</div>
+<form id="formTrouble">
+    <h3>Register any pronunciation trouble</h3>
+    <p>
+        <label for="description">Description:</label>
+        <textarea name="description" id="txtTrouble" class="textBox"></textarea>
+    </p>
+    <p>
+        <label for="assignee">Assignee:</label>
+        <input type="text" name="assignee" id="txtAsignee" class="textBox" />
+    </p>
+</form>
+<input type="button" id="btnSave" value="Save" class="button" />
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.serialize-object.js"></script>
+<script src="~/js/app/trouble.js"></script>
