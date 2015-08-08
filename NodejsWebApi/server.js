@@ -38,6 +38,8 @@ var port = process.env.PORT || 8080; // set our port
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://admin:Canada2015.@apollo.modulusmongo.net:27017/ju2neDih'); // connect to our database
 var Bear = require('./app/models/bear');
+var Trouble = require('./app/models/trouble');
+var Help = require('./app/models/help);
 
 // ROUTES FOR OUR API
 // =============================================================================
@@ -109,6 +111,7 @@ router.route('/bears/:bear_id')
         if (err)
             res.send(err);
         bear.name = req.body.name; 
+
         bear.save(function (err) {
             if (err)
                 res.send(err);
@@ -146,7 +149,9 @@ router.route('/trouble')
     .post(function (req, res) {
     
     var trouble = new Trouble();      // create a new instance of the trouble model
-    trouble.name = req.body.name;  // set the trouble name (comes from the request)
+    //trouble.name = req.body.name;  // set the trouble name (comes from the request)
+    trouble.description = req.body.description;
+    trouble.assignee = req.body.assignee;
     
     trouble.save(function (err) {
         if (err)
