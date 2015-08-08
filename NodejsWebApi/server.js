@@ -59,6 +59,8 @@ router.get('/', function (req, res) {
 
 // on routes that end in /bears
 // ----------------------------------------------------
+
+
 router.route('/bears')
 
 	// create a bear (accessed at POST http://localhost:8080/bears)
@@ -122,6 +124,166 @@ router.route('/bears/:bear_id')
     Bear.remove({
         _id: req.params.bear_id
     }, function (err, bear) {
+        if (err)
+            res.send(err);
+        
+        res.json({ message: 'Successfully deleted' });
+    });
+});
+
+
+// =====================================================
+
+
+
+// on routes that end in /trouble
+// ----------------------------------------------------
+
+
+router.route('/trouble')
+
+    // create a trouble (accessed at POST http://localhost:8080/trouble)
+    .post(function (req, res) {
+    
+    var trouble = new Trouble();      // create a new instance of the trouble model
+    trouble.name = req.body.name;  // set the trouble name (comes from the request)
+    
+    trouble.save(function (err) {
+        if (err)
+            res.send(err);
+        
+        res.json({ message: 'Trouble created!' });
+    });
+
+        
+})
+
+    // get all the trouble (accessed at GET http://localhost:8080/api/trouble)
+    .get(function (req, res) {
+    Trouble.find(function (err, trouble) {
+        if (err)
+            res.send(err);
+        
+        res.json(trouble);
+    });
+});
+
+// on routes that end in /trouble/:trouble_id
+// ----------------------------------------------------
+router.route('/trouble/:trouble_id')
+
+    // get the trouble with that id
+    .get(function (req, res) {
+    Trouble.findById(req.params.trouble_id, function (err, trouble) {
+        if (err)
+            res.send(err); 
+        res.json(trouble);
+    });
+})
+
+    // update the trouble with this id
+    .put(function (req, res) {
+    Trouble.findById(req.params.trouble_id, function (err, trouble) {
+        
+        if (err)
+            res.send(err);
+        trouble.name = req.body.name; 
+        trouble.save(function (err) {
+            if (err)
+                res.send(err);
+            
+            res.json({ message: 'Trouble updated!' });
+        });
+
+    });
+})
+
+    // delete the trouble with this id
+    .delete(function (req, res) {
+    Trouble.remove({
+        _id: req.params.trouble_id
+    }, function (err, trouble) {
+        if (err)
+            res.send(err);
+        
+        res.json({ message: 'Successfully deleted' });
+    });
+});
+
+
+// =====================================================
+
+
+// on routes that end in /help
+// ----------------------------------------------------
+
+
+router.route('/help')
+
+    // create a help (accessed at POST http://localhost:8080/help)
+    .post(function (req, res) {
+    
+    var help = new Help();      // create a new instance of the help model
+    help.description = req.body.description;  // set the help description (comes from the request)
+    help.assignee = req.body.assignee;  // set the help assignee (comes from the request)
+    
+    help.save(function (err) {
+        if (err)
+            res.send(err);
+        
+        res.json({ message: 'Help created!' });
+    });
+
+        
+})
+
+    // get all the help (accessed at GET http://localhost:8080/api/help)
+    .get(function (req, res) {
+    Help.find(function (err, help) {
+        if (err)
+            res.send(err);
+        
+        res.json(help);
+    });
+});
+
+// on routes that end in /help/:help_id
+// ----------------------------------------------------
+router.route('/help/:help_id')
+
+    // get the help with that id
+    .get(function (req, res) {
+    Help.findById(req.params.help_id, function (err, help) {
+        if (err)
+            res.send(err); 
+        res.json(help);
+    });
+})
+
+    // update the help with this id
+    .put(function (req, res) {
+    Help.findById(req.params.help_id, function (err, help) {
+        
+        if (err)
+            res.send(err);
+        help.description = req.body.description;  // set the help description (comes from the request)
+        help.example = req.body.example;  // set the help example (comes from the request)
+
+        help.save(function (err) {
+            if (err)
+                res.send(err);
+            
+            res.json({ message: 'Help updated!' });
+        });
+
+    });
+})
+
+    // delete the help with this id
+    .delete(function (req, res) {
+    Help.remove({
+        _id: req.params.help_id
+    }, function (err, help) {
         if (err)
             res.send(err);
         
